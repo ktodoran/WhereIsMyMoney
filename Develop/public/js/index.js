@@ -6,25 +6,25 @@ fetch("/api/transaction")
     return response.json();
   })
   .then(data => {
-    // save db data on global variable
+    //Save Data on Global Variable
     transactions = data;
 
-    populateTotal();
-    populateTable();
-    populateChart();
+    showTotal();
+    showTable();
+    showCharts();
   });
 
-function populateTotal() {
-  // reduce transaction amounts to a single total value
-  let total = transactions.reduce((total, t) => {
-    return total + parseInt(t.value);
+function showTotal() {
+  //Create Total Value from Single Transactions
+  let singleTotal = transactions.reduce((singleTotal, t) => {
+    return singleTotal + parseInt(t.value);
   }, 0);
 
-  let totalEl = document.querySelector("#total");
-  totalEl.textContent = total;
+  let singleTotalEl = document.querySelector("#singleTotal");
+  singleTotalEl.textContent = singleTotal;
 }
 
-function populateTable() {
+function showTable() {
   let tbody = document.querySelector("#tbody");
   tbody.innerHTML = "";
 
@@ -40,19 +40,19 @@ function populateTable() {
   });
 }
 
-function populateChart() {
+function showCharts() {
   // copy array and reverse it
-  let reversed = transactions.slice().reverse();
+  let reverseArray = transactions.slice().reverse();
   let sum = 0;
 
   // create date labels for chart
-  let labels = reversed.map(t => {
+  let labels = reverseArray.map(t => {
     let date = new Date(t.date);
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   });
 
   // create incremental values for chart
-  let data = reversed.map(t => {
+  let data = reverseArray.map(t => {
     sum += parseInt(t.value);
     return sum;
   });
@@ -108,8 +108,8 @@ function sendTransaction(isAdding) {
   transactions.unshift(transaction);
 
   // re-run logic to populate ui with new record
-  populateChart();
-  populateTable();
+  showCharts();
+  showTable();
   populateTotal();
   
   // also send to server

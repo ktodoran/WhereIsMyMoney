@@ -2,7 +2,7 @@
     "name": "Where Is My Money - Budget Tracker",
     "short_name": "Where's My Money - Budget Tracker",
     "description": "An application a user can utilize to track their daily transactions",
-    "icons" : [
+    "icons": [
         {
             "src": "../icons/icon-72x72.png",
             "type": "image/png",
@@ -44,9 +44,8 @@
             "sizes": "512x512"
         }
     ],
-
     "background_color": "#ffffff",
-    "theme_color":"5D6D7E",
+    "theme_color": "5D6D7E",
     "start_url": "/",
     "display": "standalone"
 }
