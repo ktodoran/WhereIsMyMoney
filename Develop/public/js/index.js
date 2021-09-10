@@ -16,12 +16,12 @@ fetch("/api/transaction")
 
 function displayTotal() {
   //Create Total Value from Single Transactions
-  let oneTotal = transactions.reduce((oneTotal, t) => {
-    return oneTotal + parseInt(t.value);
+  let total = transactions.reduce((total, t) => {
+    return total + parseInt(t.value);
   }, 0);
 
-  let oneTotalEl = document.querySelector("#oneTotal");
-  oneTotalEl.textContent = oneTotal;
+  let total = document.querySelector("#total");
+  total.textContent = total;
 }
 
 function displayTable() {
@@ -42,17 +42,17 @@ function displayTable() {
 
 function displayCharts() {
   // copy array and reverse it
-  let revertArray = transactions.slice().reverse();
+  let reverseArr = transactions.slice().reverse();
   let sum = 0;
 
   // create date labels for chart
-  let labels = revertArray.map(t => {
+  let labels = reverseArr.map(t => {
     let date = new Date(t.date);
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   });
 
   // create incremental values for chart
-  let data = revertArray.map(t => {
+  let data = reverseArr.map(t => {
     sum += parseInt(t.value);
     return sum;
   });
