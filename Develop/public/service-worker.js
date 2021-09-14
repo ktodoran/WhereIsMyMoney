@@ -1,8 +1,8 @@
 newFunction();
 
 function newFunction() {
-    const APP_PREFIX = "WhereIsMyMoney";
-    const VERSION = 'version_2';
+    const APP_PREFIX = "WIMM";
+    const VERSION = 'version_2.0';
     const CACHE_NAME = APP_PREFIX + VERSION;
     const FILES_TO_CACHE = [
         '/',
