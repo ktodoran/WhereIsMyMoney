@@ -9,32 +9,22 @@ fetch("/api/transaction")
     // save db data on global variable
     transactions = data;
 
-    populateTotal();
-    populateTable();
-    populateChart();
+   displayTotal();
+   displayTable();
+   displayChart();
   });
 
-<<<<<<< HEAD
-function populateTotal() {
-  // reduce transaction amounts to a single total value
-=======
 function displayTotal() {
   //Create Total Value from Single Transactions
->>>>>>> 013e3ab20c2987e1892ec5bf2bd45870a5e1a076
   let total = transactions.reduce((total, t) => {
     return total + parseInt(t.value);
   }, 0);
 
-<<<<<<< HEAD
   let totalEl = document.querySelector("#total");
   totalEl.textContent = total;
-=======
-  let total = document.querySelector("#total");
-  total.textContent = total;
->>>>>>> 013e3ab20c2987e1892ec5bf2bd45870a5e1a076
 }
 
-function populateTable() {
+function displayTable() {
   let tbody = document.querySelector("#tbody");
   tbody.innerHTML = "";
 
@@ -50,7 +40,7 @@ function populateTable() {
   });
 }
 
-function populateChart() {
+function displayChart() {
   // copy array and reverse it
   let reversedArr = transactions.slice().reverse();
   let sum = 0;
@@ -118,8 +108,8 @@ function sendTransaction(isBeingAdded) {
   transactions.unshift(transaction);
 
   // re-run logic to populate ui with new record
-  populateChart();
-  populateTable();
+  displayChart();
+  displayTable();
   populateTotal();
 
   // also send to server
