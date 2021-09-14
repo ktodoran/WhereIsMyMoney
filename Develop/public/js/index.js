@@ -14,14 +14,24 @@ fetch("/api/transaction")
     populateChart();
   });
 
+<<<<<<< HEAD
 function populateTotal() {
   // reduce transaction amounts to a single total value
+=======
+function displayTotal() {
+  //Create Total Value from Single Transactions
+>>>>>>> 013e3ab20c2987e1892ec5bf2bd45870a5e1a076
   let total = transactions.reduce((total, t) => {
     return total + parseInt(t.value);
   }, 0);
 
+<<<<<<< HEAD
   let totalEl = document.querySelector("#total");
   totalEl.textContent = total;
+=======
+  let total = document.querySelector("#total");
+  total.textContent = total;
+>>>>>>> 013e3ab20c2987e1892ec5bf2bd45870a5e1a076
 }
 
 function populateTable() {
@@ -42,17 +52,17 @@ function populateTable() {
 
 function populateChart() {
   // copy array and reverse it
-  let reversed = transactions.slice().reverse();
+  let reversedArr = transactions.slice().reverse();
   let sum = 0;
 
   // create date labels for chart
-  let labels = reversed.map(t => {
+  let labels = reversedArr.map(t => {
     let date = new Date(t.date);
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   });
 
   // create incremental values for chart
-  let data = reversed.map(t => {
+  let data = reversedArr.map(t => {
     sum += parseInt(t.value);
     return sum;
   });
